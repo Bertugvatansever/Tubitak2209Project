@@ -1,0 +1,119 @@
+﻿@using Gat.Core.Entity
+@using X.PagedList
+@using X.PagedList.Mvc.Core
+@model IPagedList<ProductOperations>
+@{
+    ViewData["Title"] = "UserProductOperation";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<style>
+    .pagination {
+        display: inline-block;
+        margin-bottom: 0;
+        padding-left: 0;
+        list-style: none;
+        border-radius: .25rem;
+        float: right; /* Sağa yasla */
+    }
+
+        .pagination li {
+            display: inline;
+        }
+
+            .pagination li a,
+            .pagination li span {
+                position: relative;
+                float: left;
+                padding: .5rem .75rem;
+                margin-left: -1px;
+                line-height: 1.25;
+                color: #007bff;
+                text-decoration: none;
+                background-color: #fff;
+                border: 1px solid #dee2e6;
+            }
+
+        .pagination .active a,
+        .pagination .active span {
+            z-index: 2;
+            color: #fff;
+            cursor: default;
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .pagination .disabled span,
+        .pagination .disabled a {
+            color: #6c757d;
+            cursor: not-allowed;
+            background-color: #fff;
+            border-color: #dee2e6;
+        }
+</style>
+
+<!-- Product Section Begin -->
+<section class="product spad" style="padding:0;">
+    <div class="container">
+        @* <div style="text-align: center; margin-bottom: 35px;">
+        <h1 style="font-weight: bold; color: #ad9439; font-size: 32px; text-transform: uppercase; letter-spacing: 2px;">SATILIK ÜRÜNLER</h1>
+        <hr style="border: 2px solid #ad9439; width: 50px; margin: 10px auto;">
+        </div>*@
+        <div class="row">
+            <div class="col-lg-3 col-md-5">
+                <div class="sidebar">
+                    <div class="sidebar__item">
+                        <h4>
+                            <div>
+                                <i class="fas fa-key" style="margin-right: 3px;"></i>Hesabım<span></span>
+                            </div>
+                        </h4>
+                        <ul>
+                            <li><a href="/UserOperation/UserProductOperation/"><i class="fas fa-cogs"></i> İşlemlerim</a></li>
+                            <li><a href="/UserOperation/Index/"><i class="fas fa-user"></i>Kullanıcı Bilgilerim</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9 col-md-7">
+                
+                <div class="section-title product__discount__title" style="margin-bottom: 30px;">
+                    <h2 style="font-size: 25px;">İşlem Hareketleri</h2>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6" style="flex: 0 0 100%; max-width: 100%;">
+                        <table class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Ürün</th>
+                                    <th>Ürün Adı</th>
+                                    <th>Fiyat</th>
+                                    <th>İşlem Türü</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td><img src="@item.Product.ProductImage" alt="Product Image" style="max-width: 50px; max-height: 50px;"></td>
+                                        <td>@item.Product.ProductName</td>
+                                        <td>@item.Price ₺</td>
+                                        <td>@item.OperationType</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                        @Html.PagedListPager((IPagedList)Model, page => Url.Action("UserProductOperation", new {page}))
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Product Section End -->
+

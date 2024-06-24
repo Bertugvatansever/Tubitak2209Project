@@ -1,0 +1,40 @@
+﻿@using Gat.Core.Model
+@model productCategoryModel
+@{
+    ViewData["Title"] = "ShopDetail";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+
+    <section class="product-details spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <div class="product__details__pic">
+                        <div class="product__details__pic__item">
+                            <img class="product__details__pic__item--large"
+                                 src="@Model.Product.ProductImage" alt="">
+                        </div>                   
+                    </div>
+                </div>             
+                <div class="col-lg-6 col-md-6">
+                    <div class="product__details__text">
+                        <h3>@Model.Product.ProductName</h3>
+                        <div class="product__details__price">@Model.Product.Price ₺</div>
+                        <p>
+                            @Model.Product.Description
+                        </p>                    
+                        <ul style="padding-top: 0px; margin-top: 0px;">
+                            <li><b>İlan Kodu</b> <span>@Model.Product.AdvertCode</span></li>
+                            <li><b>Stok Bilgisi</b> <span>@Model.Product.Stock</span></li>
+                            <li><b>Ürün Tipi</b> <span><samp>@Model.Product.ProductType</samp></span></li>
+                            <li><b>Kategori</b> <span>@Model.Product.Category.CategoryName</span></li>
+                        <li style="text-align: end; margin-top: 25px; "><a asp-controller="Shop" asp-action="ShoppingCard" asp-route-id="@Model.Product.Id" class="primary-btn" style="border-radius: 15px;"><i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>Sepete Ekle</a>  </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>    
+

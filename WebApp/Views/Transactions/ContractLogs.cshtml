@@ -1,0 +1,93 @@
+﻿@using Gat.Core.Model
+@model List<EtherscanProductGet>
+@{
+    ViewData["Title"] = "ContractLogs";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    th, td {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    h3 {
+        display: block;
+        text-align: center;
+        color: #ad9439; /* Tema rengi */
+        margin-bottom: 10px;
+        margin-top: 15px;
+        text-align: center;
+    }
+
+    .icon {
+        font-size: 24px; /* İkon boyutu */
+        margin-right: 10px;
+        color: #ad9439; /* Tema rengi */
+    }
+</style>
+
+<h3></h3>
+
+<a href="/Transactions/Index/" style="display: inline-block; padding: 10px 20px; font-size: 16px; text-align: center; text-decoration: none; background-color: #ad9439; color: white; border-radius: 5px; transition: background-color 0.3s ease;" onmouseover="this.style.backgroundColor='#7fad39'" onmouseout="this.style.backgroundColor='#7fad39'">
+    <i class="fas fa-user-cog" style="margin-right: 5px;"></i>GAT'da Kişisel İşlemler
+</a>
+
+<a href="/Transactions/ContractLogs/" style="display: inline-block; padding: 10px 20px; font-size: 16px; text-align: center; text-decoration: none; background-color: #ad9439; color: white; border-radius: 5px; transition: background-color 0.3s ease;" onmouseover="this.style.backgroundColor='#7fad39'" onmouseout="this.style.backgroundColor='#7fad39'">
+    <i class="fas fa-coins" style="margin-right: 5px;"></i>GAT'da Tüm İşlemler
+</a>
+
+<a href="https://sepolia.etherscan.io/address/0x66C1B57307ab6cdE3aB87df5b980A29B3375F4A0" style="display: inline-block; padding: 10px 20px; font-size: 16px; text-align: center; text-decoration: none; background-color: #ad9439; color: white; border-radius: 5px; transition: background-color 0.3s ease;" onmouseover="this.style.backgroundColor='#7fad39'" onmouseout="this.style.backgroundColor='#ad9439'">
+    Etherscana Bağlan
+</a>
+<br />
+<h3 style="margin-top;10px;">
+    <span class="icon"><i class="fas fa-coins"></i></span> GAT İşlemleri
+</h3>
+
+<table>
+    <thead>
+        <tr>
+            <th>Product Name</th>
+            <th>Product Type</th>
+            <th>Product Price</th>
+            <th>Product Amount</th>
+            <th>Buyer Name</th>
+            <th>Buyer Surname</th>
+            <th>Seller Name</th>
+            <th>Seller Surname</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.productName</td>
+                <td>@item.productType</td>
+                <td>@item.productPrice</td>
+                <td>@item.productAmount</td>
+                <td>@item.buyerName</td>
+                <td>@item.buyersurName</td>
+                <td>@item.sellerName</td>
+                <td>@item.sellerSurname</td>
+                <td>@item.startTime</td>
+                <td>@item.endTime</td>
+            </tr>
+        }
+        <!-- Add more rows if needed -->
+    </tbody>
+</table>
+

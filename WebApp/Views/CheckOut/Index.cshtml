@@ -1,0 +1,116 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<!-- Checkout Section Begin -->
+<section class="checkout spad">
+    <div class="container">
+        <div class="row">
+        </div>
+        <div class="checkout__form">
+            <h4>Ödeme Bilgileri</h4>
+            <form action="#">
+                <div class="row">
+                    <div class="col-lg-8 col-md-6">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="checkout__input">
+                                    <p>İsim<span>*</span></p>
+                                    <input type="text">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="checkout__input">
+                                    <p>Soyisim<span>*</span></p>
+                                    <input type="text">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="checkout__input">
+                            <p>Ülke<span>*</span></p>
+                            <input type="text">
+                        </div>
+                        <div class="checkout__input">
+                            <p>Adres<span>*</span></p>
+                            <input type="text" placeholder="Cadde" class="checkout__input__add">
+                            <input type="text" placeholder="Sokak, Apartman, Bina No">
+                        </div>
+                        <div class="checkout__input">
+                            <p>Şehir<span>*</span></p>
+                            <input type="text">
+                        </div>
+                        <div class="checkout__input">
+                            <p>Semt<span>*</span></p>
+                            <input type="text">
+                        </div>
+                        <div class="checkout__input">
+                            <p>Posta Kodu<span>*</span></p>
+                            <input type="text">
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="checkout__input">
+                                    <p>Telefon<span>*</span></p>
+                                    <input type="text">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="checkout__input">
+                                    <p>E-Posta<span>*</span></p>
+                                    <input type="text">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="checkout__input">
+                            <p>Parola<span>*</span></p>
+                            <input type="text">
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="checkout__order">
+                            <h4>Siparişiniz</h4>
+                            <div class="checkout__order__products">Ürünler <span>Toplam</span></div>
+                            <ul>
+                                <li>Vegetable’s Package <span>$75.99</span></li>
+                                <li>Fresh Vegetable <span>$151.99</span></li>
+                                <li>Organic Bananas <span>$53.99</span></li>
+                            </ul>
+                            <div class="checkout__order__subtotal">Ara Tutar <span>$750.99</span></div>
+                            <div class="checkout__order__total">Toplam Tutar <span>$750.99</span></div>
+                            <div class="checkout__input__checkbox">
+                                <label for="acc-or">
+                                    Bir Hesap Oluşturun?
+                                    <input type="checkbox" id="acc-or">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                            <p>
+                                Kendine iyi bakman önemli, şişmanlayacaksın ama zamanla böyle olur
+                                sanki büyük bir emek ve acıyla.
+                            </p>
+                            <div class="checkout__input__checkbox">
+                                <label for="payment">
+                                    Ödemeyi Kontrol Et
+                                    <input type="checkbox" id="payment">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                            <div class="checkout__input__checkbox">
+                                <label for="paypal">
+                                    Paypal
+                                    <input type="checkbox" id="paypal">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                            <button type="submit" class="site-btn">Ödemeyi Tamamla</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+<!-- Checkout Section End -->
+

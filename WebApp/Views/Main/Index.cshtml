@@ -1,0 +1,137 @@
+﻿@using Gat.Core.Model
+@model productCategoryModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+<!-- Categories Section Begin -->
+<section class="categories">
+    <div class="container">
+        <div class="row">
+            <div class="categories__slider owl-carousel">
+                @foreach (var item in Model.Categories)
+                {
+                    <div class="col-lg-3">
+                        <div class="categories__item set-bg">
+                            <img src="@item.CategoryImage" alt="">
+                            <h5><a href="/Shop/Index/@item.Id">@item.CategoryName</a></h5>
+                        </div>
+                    </div>
+                }              
+                
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Categories Section End -->
+<!-- Featured Section Begin -->
+<section class="featured spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title">
+                    <h2>Son Eklenen Satılık Ürünler</h2>
+                </div>
+                @*<div class="featured__controls">
+                    <ul>
+                        <li class="active" data-filter="*">Hepsi</li>
+                        <li data-filter=".oranges">Turunçgil</li>
+                        <li data-filter=".fresh-meat">Meyvler</li>
+                        <li data-filter=".vegetables">Sebzeler</li>
+                        <li data-filter=".fastfood">Hazır Yemekler</li>
+                    </ul>
+                </div>*@
+            </div>
+        </div>
+        <div class="row featured__filter">
+            @foreach (var item in Model.Products)
+            {
+                <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
+                    <div class="featured__item">
+                        <div class="featured__item__pic set-bg">
+                            <img src="@item.ProductImage" alt="">
+                            <ul class="featured__item__pic__hover">
+                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="featured__item__text">
+                            <h6><a href="/Shop/ShopDetail/@item.Id">@item.ProductName</a></h6>
+                            <h5>@item.Price ₺</h5>
+                        </div>
+                    </div>
+                </div>
+            }
+           
+           
+        </div>
+    </div>
+</section>
+<!-- Featured Section End -->
+<!-- Banner Begin -->
+<div class="banner">
+    <div class="container">
+        <div class="row">
+            
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="banner__pic">
+                    <img src="~/ogani-master/img/b44.jpg" />
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="banner__pic">
+                    <img src="https://media.istockphoto.com/id/543212762/tr/foto%C4%9Fraf/tractor-cultivating-field-at-spring.jpg?s=612x612&w=0&k=20&c=aRhigosdxiwip6gsqR6R0Bgjb_5i9yFb_1SED_J44YI=" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="featured spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title">
+                    <h2>Son Eklenen Kiralık Ürünler</h2>
+                </div>
+                @*<div class="featured__controls">
+                <ul>
+                <li class="active" data-filter="*">Hepsi</li>
+                <li data-filter=".oranges">Turunçgil</li>
+                <li data-filter=".fresh-meat">Meyvler</li>
+                <li data-filter=".vegetables">Sebzeler</li>
+                <li data-filter=".fastfood">Hazır Yemekler</li>
+                </ul>
+                </div>*@
+            </div>
+        </div>
+        <div class="row featured__filter">
+            @foreach (var item in Model.ProductsHire)
+            {
+                <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
+                    <div class="featured__item">
+                        <div class="featured__item__pic set-bg">
+                            <img src="@item.ProductImage" alt="">
+                            <ul class="featured__item__pic__hover">
+                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="featured__item__text">
+                            <h6><a href="/Shop/HireDetail/@item.Id">@item.ProductName</a></h6>
+                            <h5>@item.Price ₺</h5>
+                        </div>
+                    </div>
+                </div>
+            }
+
+
+        </div>
+    </div>
+</section>
+
+

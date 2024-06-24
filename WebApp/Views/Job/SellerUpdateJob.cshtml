@@ -1,0 +1,51 @@
+﻿@using Gat.Core.Entity
+@model Job
+@{
+    ViewData["Title"] = "SellerUpdateJob";
+    Layout = "~/Views/Shared/_SellerLayout.cshtml";
+}
+
+<h3>İlan Güncelle</h3>
+<br />
+<div>
+    <form class="form-group" method="post" enctype="multipart/form-data">
+
+        <label>İlan Başlığıı</label>
+        <input name="UserId" value="@Model.UserId" class="form-control" style="width:30%;" hidden />
+
+        <input name="Title" value="@Model.Title" class="form-control" style="width:30%;" />
+        <br />
+
+        <label>İlan Açıklama</label>
+        @* <input name="Description" value="@Model.Description" class="form-control" style="width:30%;" />*@
+        <textarea name="Description" class="form-control" style="width: 50%;" rows="5">@Model.Description</textarea>
+
+        <br />
+        <label>Ücret</label>
+        <input name="Pay" value="@Model.Pay" class="form-control" style="width:30%;" />
+        <br />
+
+        <label>Adres</label>
+        <input name="JobAdress" value="@Model.JobAdress" class="form-control" style="width:30%;" />
+        <br />            
+
+        <label>Çalışma Saati</label>
+        <input name="JobDuration" value="@Model.JobDuration" class="form-control" style="width:30%;" />
+        <br />
+
+
+        <label>İlan Tarihi</label>
+        <input name="Date" value="@Model.Date.ToString("dd.MM.yyyy")" class="form-control" style="width:30%;" />
+        <br />
+
+        <label>İlan Resmi</label>
+        <input type="file" name="JobImage" class="form-control" style="width:30%;" />
+        <br />
+
+        <button class=" btn btn-success" style="background-color:#7fad39;">İlanı Güncelle</button>
+
+
+    </form>
+
+</div>
+

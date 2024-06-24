@@ -1,0 +1,70 @@
+﻿@using Gat.Core.Entity
+@model Product
+@{
+    ViewData["Title"] = "SellerUpdateProduct";
+    Layout = "~/Views/Shared/_SellerLayout.cshtml";
+}
+
+<h3>Ürün Güncelle</h3>
+<br />
+<div>
+    <form class="form-group" method="post">
+       
+            <label>Ürün Adı</label>
+            <input name="UserId" value="@Model.UserId" class="form-control" style="width:30%;" hidden/>
+
+            <input name="ProductName" value="@Model.ProductName" class="form-control" style="width:30%;" />
+            <br />
+
+            <label>Açıklama<small>(ürün içeriği ve ürün hakkında bilgi)</small></label>
+           @* <input name="Description" value="@Model.Description" class="form-control" style="width:30%;" />*@
+        <textarea name="Description" class="form-control" style="width: 50%;" rows="5">@Model.Description</textarea>
+
+            <br />
+
+            <label>Kategori</label>
+            <select name="CategoryId" class="form-control" style="width:30%;">
+                <option value="@Model.CategoryId">@Model.Category.CategoryName</option>
+                @if ( ViewBag.Category != null)
+                {
+                    foreach (var item2 in ViewBag.Category)
+                    {
+                        
+                        <option value="@item2.Id">@item2.CategoryName</option>
+                    }
+                }
+            </select>
+            
+
+            <br />
+            <label>Ürün Fiyat</label>
+            <input name="Price" value="@Model.Price" class="form-control" style="width:30%;" />
+            <br />
+
+            <label>Stok Miktarı</label>
+            <input name="Stock" value="@Model.Stock" class="form-control" style="width:30%;" />
+            <br />
+
+@*            <label>Ürün Tipi <small>(kiralık/satılık)</small> </label>
+            <input name="ProductType" value="@Model.ProductType" class="form-control" style="width:30%;" />
+            <br />*@
+
+            <label>Ürün Tipi <small>(kiralık/satılık)</small></label>
+            <select name="ProductType" class="form-control" style="width:30%;">
+            <option value="" selected>@Model.ProductType</option>
+                <option value="kiralık">Kiralık</option>
+                <option value="satılık">Satılık</option>
+            </select>
+            <br />
+
+            <label>Ürün Resmi</label>
+            <input name="ProductImage" value="@Model.ProductImage" class="form-control" style="width:30%;" />
+            <br />
+
+            <button class=" btn btn-success" style="background-color:#7fad39;">Ürünü Güncelle</button>
+        
+       
+    </form>
+
+</div>
+

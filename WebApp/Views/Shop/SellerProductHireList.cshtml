@@ -1,0 +1,120 @@
+﻿@using Gat.Core.Entity
+@model List<Product>
+@{
+    ViewData["Title"] = "SellerProductHireList";
+    Layout = "~/Views/Shared/_SellerLayout.cshtml";
+}
+
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-TIwD35/3F7Jq4uwUOpC8Im/kOTU8IuZ3z5w+/z9bZLP4L4Np/P4YOOq0F72Mny6" crossorigin="anonymous">
+
+<!-- Bootstrap JS ve jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-O8i//NlLe2CqcSgZULqMl7YQw0FSj9lMjjRuxr1CJA6RaiRqazM7RA3mt8QAnvQQ" crossorigin="anonymous"></script>
+
+<style>
+    .product-header {
+        text-transform: uppercase;
+        color: #7fad39;
+        font-weight: bold;
+        font-family: 'Arial', sans-serif;
+    }
+
+        .product-header i {
+            margin-right: 8px;
+        }
+
+    td, th {
+        text-align: center;
+    }
+</style>
+
+<br />
+<h3 class="product-header"><i class="fas fa-shopping-bag"></i> Kiralık Ürünler</h3>
+<br />
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Ürün Adı</th>
+            <th>Kategori</th>
+            <th>Fiyat</th>
+            <th>Güncelle</th>
+            <th>Sil</th>
+            <th>Detay</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ProductName</td>
+                <td>@item.Category.CategoryName</td>
+                <td>₺@item.Price</td>
+                <td> <a class="btn btn-warning" asp-controller="Shop" asp-action="SellerUpdateProduct" asp-route-id="@item.Id">Güncelle</a> </td>
+                <td> <a class="btn btn-danger" data-toggle="modal" data-target="#confirmDeleteModal-@item.Id">Sil</a> </td>
+                <td> <a class="btn btn-secondary" style="color:white;" data-toggle="modal" data-target="#productDetailModal-@item.Id">Ürün Detayı</a> </td>
+            </tr>
+
+
+            <div class="modal fade" id="productDetailModal-@item.Id" tabindex="-1" role="dialog" aria-labelledby="productDetailModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="productDetailModalLabel">@item.ProductName</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <img src="@item.ProductImage" alt="@item.ProductName" class="img-fluid">
+                                </div>
+                                <div class="col-md-6">
+                                    <p><strong>Fiyat:</strong> @item.Price.ToString("C")</p>
+                                    <p><strong>Stok:</strong> @item.Stock</p>
+                                    <p><strong>Kategori:</strong> @item.Category.CategoryName</p>
+                                    <p><strong>Tür:</strong> @item.ProductType</p>
+                                    <p><strong>Açıklama:</strong> @item.Description</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="modal fade" id="confirmDeleteModal-@item.Id" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="confirmDeleteModalLabel">Silme Onayı</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            Silmek istediğinizden emin misiniz?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">İptal</button>
+                            <a href="@Url.Action("SellerDeleteProduct", "Shop", new { id = item.Id })" class="btn btn-danger">Evet, Sil</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+
+    </tbody>
+</table>
+
+<a class="btn btn-primary" style="color:white; background-color:#7fad39;" asp-controller="Shop" asp-action="SellerAddProduct">Ürün Ekle</a>
+
+
+

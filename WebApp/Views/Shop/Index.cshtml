@@ -1,0 +1,67 @@
+﻿@using Gat.Core.Model
+@model productCategoryModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<!-- Product Section Begin -->
+<section class="product spad" style="padding:0;">
+    <div class="container">
+        <div style="text-align: center; margin-bottom: 35px;">
+            <h1 style="font-weight: bold; color: #ad9439; font-size: 32px; text-transform: uppercase; letter-spacing: 2px;">SATILIK ÜRÜNLER</h1>
+            <hr style="border: 2px solid #ad9439; width: 50px; margin: 10px auto;">
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-md-5">
+                <div class="sidebar">
+                    <div class="sidebar__item">
+                        <h4>Kategoriler</h4>
+                        <ul>
+                            @foreach (var item in Model.Categories)
+                            {
+                                <li><a href="/Shop/Index/@item.Id">@item.CategoryName</a></li>
+                            }                           
+                            
+                        </ul>
+                    </div>                   
+                </div>
+            </div>
+            <div class="col-lg-9 col-md-7">               
+                
+                    @if (ViewBag.CategoryName != null)
+                    {
+                    <div class="section-title product__discount__title">
+                        <h2 style="font-size: 25px;">@ViewBag.CategoryName</h2>
+                    </div>
+                    }
+                
+                <div class="row">                    
+                    @foreach (var item in Model.Products)
+                    {
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="product__item">
+                                <div class="product__item__pic set-bg">
+                                    <img src="@item.ProductImage" alt="">
+                                    <ul class="product__item__pic__hover">
+                                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                                    </ul>
+                                </div>
+                                <div class="product__item__text">
+                                    <h6><a href="/Shop/ShopDetail/@item.Id">@item.ProductName</a></h6>
+                                    <h5>@item.Price ₺</h5>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                                      
+                </div>              
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Product Section End -->
+
+@*<img src="~/imageproduct/format_webp.jpeg" />*@

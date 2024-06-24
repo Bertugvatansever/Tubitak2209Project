@@ -1,0 +1,54 @@
+﻿@using Gat.Core.Model
+@model productCategoryModel
+@{
+    ViewData["Title"] = "SellerAddProduct";
+    Layout = "~/Views/Shared/_SellerLayout.cshtml";
+}
+
+<h3>Ürün Ekle</h3>
+<br />
+<div>
+    <form class="form-group" method="post" enctype="multipart/form-data">
+        
+        <label>Ürün Adı</label>
+        <input name="ProductName" class="form-control" style="width:30%;" />
+        <br />
+
+        <label>Açıklama<small>(ürün içeriği ve ürün hakkında bilgi)</small></label>      
+        <textarea name="Description" class="form-control" style="width: 50%;" rows="5"></textarea>
+        <br />
+
+        <label>Kategori</label>
+        <select name="CategoryId" class="form-control" style="width:30%;">
+            <option value="">Seçiniz</option>
+            @if (Model != null && Model.Categories != null)
+            {
+                foreach (var item in Model.Categories)
+                {
+                    <option value="@item.Id">@item.CategoryName</option>
+                }
+            }
+        </select>
+
+        <br />
+        <label>Ürün Fiyat</label>
+        <input name="Price" class="form-control" style="width:30%;" />
+        <br />
+
+        <label>Stok Miktarı</label>
+        <input name="Stock" class="form-control" style="width:30%;" />
+        <br />
+
+        <label>Ürün Tipi <small>(kiralık/satılık)</small> </label>
+        <input name="ProductType" class="form-control" style="width:30%;" />
+        <br />
+
+        <label>Ürün Resmi</label>
+        <input type="file" name="ProductImage" class="form-control" style="width:30%;" />
+        <br />
+               
+        <button class=" btn btn-success" style="background-color:#7fad39;">Ürünü Ekle</button>
+    </form>
+   
+</div>
+

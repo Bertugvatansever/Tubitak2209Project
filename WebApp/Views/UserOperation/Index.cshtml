@@ -1,0 +1,107 @@
+﻿@using Gat.Core.Entity
+@model User
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<!-- Product Section Begin -->
+<section class="product spad" style="padding:0;">
+    <div class="container">
+       @* <div style="text-align: center; margin-bottom: 35px;">
+            <h1 style="font-weight: bold; color: #ad9439; font-size: 32px; text-transform: uppercase; letter-spacing: 2px;">SATILIK ÜRÜNLER</h1>
+            <hr style="border: 2px solid #ad9439; width: 50px; margin: 10px auto;">
+        </div>*@
+        <div class="row">
+            <div class="col-lg-3 col-md-5">
+                <div class="sidebar">
+                    <div class="sidebar__item">
+                        <h4>
+                            <div>
+                                <i class="fas fa-key" style="margin-right: 3px;"></i>Hesabım<span></span> 
+                            </div>
+                        </h4>
+                        <ul>
+                            <li><a href="/UserOperation/UserProductOperation/"><i class="fas fa-cogs"></i> İşlemlerim</a></li>
+                            <li><a href="/UserOperation/Index/"><i class="fas fa-user"></i>Kullanıcı Bilgilerim</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9 col-md-7">
+               
+                @if (ViewBag.UserSuccess != null && ViewBag.UserSuccess)
+                {
+                    <div class="alert alert-success" role="alert">
+                        Kullanıcı Bilgileriniz Güncellendi.
+                    </div>
+                }
+                <div class="section-title product__discount__title" style="margin-bottom: 30px;">
+                        <h2 style="font-size: 25px;">Kullanıcı Bilgileri</h2>
+                    </div>                
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <form method="post">
+                            <input type="text" class="form-control" name="Id" id="Id" placeholder="Kullanıcı Adı" value="@Model.Id" hidden>
+                            <input type="text" class="form-control" name="UserType" id="UserType" placeholder="Kullanıcı Adı" value="@Model.UserType" hidden>
+                            <div class="form-group">
+                                <label for="userName">Kullanıcı Adı</label>
+                                <input type="text" class="form-control" name="UserName" id="userName" placeholder="Kullanıcı Adı" value="@Model.UserName">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="userSurname">Soyadı</label>
+                                <input type="text" class="form-control" name="UserSurname" id="userSurname" placeholder="Soyadı" value="@Model.UserSurname">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="gender">Cinsiyet</label>
+                                <select class="form-control" id="gender" name="Gender">
+                                    <option value="@Model.Gender" selected >@Model.Gender</option>
+                                    <option value="erkek">erkek</option>
+                                    <option value="kadın">kadın</option>                                   
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="telNo">Telefon Numarası</label>
+                                <input type="tel" class="form-control" id="telNo" name="TelNo" placeholder="Telefon Numarası" value="@Model.TelNo">
+                            </div>
+
+                           @* <div class="form-group">
+                                <label for="userType">Kullanıcı Türü</label>
+                                <input type="text" class="form-control" id="userType" placeholder="Kullanıcı Türü" value="">
+                            </div>*@
+
+                            <div class="form-group">
+                                <label for="password">Şifre</label>
+                                <input type="text" class="form-control" id="password" name="Password" placeholder="Şifre" value="@Model.Password">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="mail">E-posta Adresi</label>
+                                <input type="email" class="form-control" id="mail" name="Mail" placeholder="E-posta Adresi" value="@Model.Mail">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="walletAdress">Cüzdan Adresi</label>
+                                <input type="text" class="form-control" id="walletAdress" name="WalletAdress" placeholder="Cüzdan Adresi" value="@Model.WalletAdress">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="privateKey">Private Key</label>
+                                <input type="text" class="form-control" id="privateKey" name="PrivateKey" placeholder="Özel Anahtar" value="@Model.PrivateKey">
+                            </div>
+
+                            <button style="float:right; background: #7fad39; color:white;" type="submit" class="btn">Bilgileri Güncelle</button>
+                        </form>
+                    </div>                                         
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Product Section End -->

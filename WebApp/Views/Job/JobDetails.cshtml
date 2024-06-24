@@ -1,0 +1,38 @@
+﻿@using Gat.Core.Entity
+@model Job
+@{
+    ViewData["Title"] = "JobDetails";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<section class="product-details spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6">
+                <div class="product__details__pic">
+                    <div class="product__details__pic__item">
+                        <img class="product__details__pic__item--large"
+                             src="@Model.JobImage" alt="">
+                    </div>                    
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <div class="product__details__text">
+                    <h3>@Model.Title</h3> 
+                    <ul>
+                        <li><b>İş Bilgisi:</b> <span>@Model.Description</span></li>
+                        <li><b>Ücret:</b> <span>@Model.Pay ₺</span></li>
+                        <li><b>Çalışma Saati:</b> <span>@Model.JobDuration saat</span></li>
+                        <li><b>Adres:</b> <span>@Model.JobAdress</span></li>
+                        <li><b>İş Veren:</b> <span>@Model.User.UserName @Model.User.UserSurname</span></li>
+                        <li><b>İş Veren TelNo:</b> <span>@Model.User.TelNo</span></li>
+                        <li><b>İlan Tarihi:</b> <span>@Model.Date.ToString("dd-MM-yyyy")</span></li>                       
+                    </ul>
+                </div>
+            </div>
+           
+        </div>
+    </div>
+</section>
+
+

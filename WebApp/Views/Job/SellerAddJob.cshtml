@@ -1,0 +1,46 @@
+﻿@using Gat.Core.Entity
+@model Job
+@{
+    ViewData["Title"] = "SellerAddJob";
+    Layout = "~/Views/Shared/_SellerLayout.cshtml";
+}
+
+<h3>İlan Ekle</h3>
+<br />
+<div>
+    <form class="form-group" method="post" enctype="multipart/form-data">
+
+        <label>İlan Başlığı</label>
+        <input name="Title" class="form-control" style="width:30%;" />
+        <br />
+
+        <label>İlan Açıklama<small>(ürün içeriği ve ürün hakkında bilgi)</small></label>
+        <textarea name="Description" class="form-control" style="width: 50%;" rows="5"></textarea>
+        <br />
+
+        <br />
+        <label>Ücret</label>
+        <input name="Pay" class="form-control" style="width:30%;" />
+        <br />
+
+        <label>Adres</label>
+        <input name="JobAdress" class="form-control" style="width:30%;" />
+        <br />
+
+        <label>Çalışma Saati</label>
+        <input name="JobDuration" class="form-control" style="width:30%;" />
+        <br />
+
+        <label>İlan Tarihi</label>
+        <input name="Date" class="form-control" style="width:30%;" type="datetime" />
+        <br />
+
+        <label>İlan Resmi</label>
+        <input type="file" name="JobImage" class="form-control" style="width:30%;" />
+        <br />
+
+        <button class=" btn btn-success" style="background-color:#7fad39;">İlan Ekle</button>
+    </form>
+
+</div>
+

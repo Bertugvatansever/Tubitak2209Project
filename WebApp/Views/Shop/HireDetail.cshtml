@@ -1,0 +1,84 @@
+﻿@using Gat.Core.Model
+@model productCategoryModel
+@{
+    ViewData["Title"] = "HireDetail";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+<section class="product-details spad">
+    <div class="container">
+        @if (ViewBag.AppLianceSuccess != null && ViewBag.AppLianceSuccess)
+        {
+            <div class="alert alert-success" role="alert">
+                Kiralamanız Onaylandı, Ürün Kiralandı!
+            </div>
+        }
+        <div class="row">
+            <div class="col-lg-6 col-md-6">
+                <div class="product__details__pic">
+                    <div class="product__details__pic__item">
+                        <img class="product__details__pic__item--large"
+                             src="@Model.Product.ProductImage" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <div class="product__details__text">
+                    <h3>@Model.Product.ProductName</h3>
+                    <div class="product__details__price">@Model.Product.Price ₺</div>
+                    <p>
+                        @Model.Product.Description
+                    </p>                   
+                                      
+                    <ul style="padding-top: 0px; margin-top: 0px;">
+                        <li><b>Stok Bilgisi</b> <span>@Model.Product.Stock</span></li>
+                        <li><b>Ürün Tipi</b> <span><samp>@Model.Product.ProductType</samp></span></li>
+                        <li><b>Kategori</b> <span>@Model.Product.Category.CategoryName</span></li>
+                        <li><b>Son Kiralama</b> <span>@ViewBag.DateHire <samp> (Yapacağınız kiralama bu tarihler arası olamaz!)</samp></span></li>
+                        <li style="text-align: end; margin-top: 25px; ">
+                            <a href="#" class="primary-btn" style="border-radius: 15px;" data-toggle="modal" data-target="#rentalModal">
+                                <i class="fas fa-handshake" style="margin-right: 5px;"></i> Kiralama Yapma
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@*kiralama tarih modalı*@
+
+<div class="modal" id="rentalModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #7fad39; color: #fff; border: none;">
+                <h5 class="modal-title" style="color: white;">Kiralama Tarihleri</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Kapat" style="color: #fff;">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="padding: 20px;">
+                <form id="rentalForm" method="post">
+                    <div class="form-group">
+                        <label for="startDate" style="color: #7fad39;">Başlangıç Tarihi:</label>
+                        <input type="date" id="startDate" name="startDate" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="endDate" style="color: #7fad39;">Bitiş Tarihi:</label>
+                        <input type="date" id="endDate" name="endDate" class="form-control" required>
+                    </div>
+
+                    <!-- Ürün bilgileri için gizli alanlar -->
+                    <input type="hidden" name="productId" value="@Model.Product.Id">                    
+
+                    <button type="submit" class="btn btn-success" style="background-color: #7fad39; border-color: #7fad39;">Kirala</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
